@@ -1,6 +1,6 @@
-<!doctype html>
-<html lang="pt-BR">
 
+<!DOCTYPE html>
+<html>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,16 +9,13 @@
     integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
   <link rel="stylesheet" href="../css/style.css">
- 
-
-</head>
-
-<body>
-    <!--Começo Nav bar---->
     
-   
-  <nav class="navbar">
-    <div class="container-fluid">
+
+
+  </head>
+<body>
+<nav class="navbar">
+<div class="container-fluid">
       <h1> Bora Agora?</h1>
       <a class="navbar-brand" href="#">Deixa conosco o planejamento!</a>
 
@@ -47,10 +44,10 @@
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="entrar.html">Entrar</a></li>
               <li><a class="dropdown-item" href="cadastro.html">Cadastre-se</a></li>
-            </ul>
+             </ul>
           </li>
     </ul>
-        </ul>
+        
         <form class="d-flex" role="search">
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-success" type="submit">Pesquisar</button>
@@ -58,53 +55,53 @@
       </div>
     </div>
   </nav>
-    
-    
-    <!--fim Nav bar---->
 
-    <!-- Formulário -->
-    <body>
-        <div class="text">
-                    <h2>Entre com seu login e senha abaixo</h2>
-                            </div>
-    <div class="form-area">
-        <div class="container">
-            <div class="form-container">
-                <div class="row single-form g-0">
-                    <div class="col-sm-12 col-lg-6">
-                        <div class="left">
-                            <img src="logo.nov.png">
-                        </div>
-                    </div>
-                    <div class="col-sm-12 col-lg-6">
-                        <div class="right">
-                            <i class="fa fa-caret-left"></i>
-                            <form>
-                                <div class="mb-3">
-                                    <label for="exampleInputEmail1" class="form-label fw-bold">Login</label>
-                                    <input type="text" class="form-control" id="exampleInputEmail1"
-                                        aria-describedby="emailHelp">
-                                    <div id="emailHelp" class="form-text"></div>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="exampleInputPassword1" class="form-label fw-bold">Senha</label>
-                                    <input type="password" class="form-control" id="exampleInputPassword1">
-                                </div>
-                                
-                                <button type="button" class="btn-primary">Entrar</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
+		
+		<div class="container py-3">
+            <form method="POST" th:object="${cliente}">
+	            <h2 class="text-center">Atualizar</h2>
+	            
+	            <input type="hidden" th:field="*{idCli}">
+
+	            <div class="form-group mb-3">
+	                <label for="nome" class="form-label">
+	                    Nome
+	                </label>
+	                <input type="text" class="form-control" id="nome" th:field="*{nome}">
+	            </div>
+	            
+	            <div class="form-group mb-3">
+	                <label for="email" class="form-label">
+	                    Email
+	                </label>
+	                <input type="email" class="form-control" id="email" th:field="*{email}">
+	            </div>
+	            
+	            <div class="form-group mb-3">
+	                <label for="telefone" class="form-label">
+	                    Telefone
+	                </label>
+	                <input type="text" class="form-control" id="telefone" th:field="*{telefone}">
+	            </div>
+	            
+	            <div class="form-group mb-3">
+	                <label for="senha" class="form-label">
+	                    Senha
+	                </label>
+	                <input type="password" class="form-control" id="senha" th:value="*{senha}" th:field="*{senha}" required>
+	            </div>
+	
+	            <button type="submit" class="btn btn-primary">
+	                Enviar
+	            </button>
+	            <a href="/cliente" class=" btn btn-danger">Cancelar</a>
+            </form>
         </div>
-    </div>
-
-              
-
-    <!---Rodapé-->
-
-  <footer>
+		
+    </main>
+    
+	<footer>
     <div class="footer-info">
       <div class="contact-info">
 
@@ -134,9 +131,14 @@
   </footer>
 
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
-    crossorigin="anonymous"></script>
+  
+
+<!--  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"-->
+<!--    integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"-->
+<!--    crossorigin="anonymous"></script>-->
+
+
+
 </body>
 
 </html>
