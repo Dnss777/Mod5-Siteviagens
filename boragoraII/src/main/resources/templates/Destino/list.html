@@ -68,22 +68,22 @@
                   <tbody>
                      
 
-                    <tr th:each="destino : ${destinos}">
+                    <tr th:each="destino : ${destinos}"> 
                         <td th:text="${destino.id}"></td>
                         <td th:text="${destino.data}"></td>
                         <td th:text="${destino.nome}"></td>
                         <td th:text="${destino.valor}"></td>
 
                         <td>
-                            <a th:href="@{/destino/{id}/editar (id=${destino.id})}"
-									class="btn btn-primary btn-edit mb-1">
-									Editar
-								</a>
-								<a th:href="@{/destino/{id}/excluir (id=${destino.id})}"
-									class="btn btn-danger btn-edit mb-1"
-									onclick="return confirm('Tem certeza que deseja excluir o destino?');">
-									Excluir
-								</a>
+<a th:href="@{/destinos/{id}/editar(id=${destino.id})}" class="btn btn-primary btn-edit mb-1">Editar</a>
+
+
+								<a th:href="@{/destinos/{id}/excluir(id=${destino.id})}"
+   class="btn btn-danger btn-edit mb-1"
+   onclick="return confirm('Tem certeza que deseja excluir o destino?');">
+   Excluir
+</a>
+
 							</td>
 
                     </tr>

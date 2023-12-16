@@ -30,7 +30,7 @@ public class CompraController {
 
 	@GetMapping
 	public ModelAndView compra() {
-		ModelAndView modelAndView = new ModelAndView("Compra/list");
+		ModelAndView modelAndView = new ModelAndView("compra/list");
 
 		modelAndView.addObject("listaCliente", clienteRepository.findAll());
 		modelAndView.addObject("listaDestino", destinoRepository.findAll());
@@ -43,7 +43,7 @@ public class CompraController {
 	
 	@GetMapping("/cadastrar")
 	public ModelAndView cadastrar() {
-		ModelAndView modelAndView = new ModelAndView("Compra/form");
+		ModelAndView modelAndView = new ModelAndView("compra/form");
 
 		modelAndView.addObject("listaCliente", clienteRepository.findAll());
 		modelAndView.addObject("listaDestino", destinoRepository.findAll());
@@ -53,22 +53,27 @@ public class CompraController {
 	}
 
 	@PostMapping("/cadastrar")
-	public String cadastrar(@Validated @ModelAttribute("compra") Compra compra, BindingResult result, ModelMap model) {
+	public ModelAndView cadastrar(@Validated @ModelAttribute("compra") Compra compra, BindingResult result, ModelMap model) {
+	    if (result.hasErrors()) {
+	        ModelAndView modelAndView = new ModelAndView("Compra/form"); // O nome do seu formulário HTML
+	        modelAndView.addObject("listaCliente", clienteRepository.findAll());
+	        modelAndView.addObject("listaDestino", destinoRepository.findAll());
+	        return modelAndView;
+	    }
 
-        if (result.hasErrors()) {
-            return "compra";
-        }
+	    model.addAttribute("id", compra.getId());
+	    model.addAttribute("data", compra.getData());
+	    model.addAttribute("total", compra.getTotal());
+	    model.addAttribute("destino", compra.getDestino());
+	    model.addAttribute("cliente", compra.getCliente());
 
-        model.addAttribute("id", compra.getId());
-        model.addAttribute("data", compra.getData());
-        model.addAttribute("total", compra.getTotal());
-        model.addAttribute("destino", compra.getDestino());
-        model.addAttribute("cliente", compra.getCliente());
+	    compraRepository.save(compra);
 
-        compraRepository.save(compra);
-
-		return "redirect:/compra";
+	    ModelAndView modelAndView = new ModelAndView("redirect:/compra"); // Alterado para redirecionar para /compra
+	    return modelAndView;
 	}
+
+
 
 	@GetMapping("/{id}/excluir")
 	public String excluir(@PathVariable Long id) {
