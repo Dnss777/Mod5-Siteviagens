@@ -13,8 +13,7 @@
    
 
 <body>
-
-  <nav class="navbar">
+<nav class="navbar">
     <div class="container-fluid">
       <h1> Bora Agora?</h1>
       <a class="navbar-brand" href="#">Deixa conosco o planejamento!</a>
@@ -26,25 +25,25 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a href="index.html" class="nav-link active" aria-current="page">Home</a>
+            <a th:href="@{/}" class="nav-link active" aria-current="page">Home</a>
           </li>
           <li class="nav-item">
-            <a href="promocao.html" class="nav-link" aria-current="page">Promoções</a>
+            <a th:href="@{/promocoes}"  class="nav-link" aria-current="page">Promoções</a>
           </li>
           <li class="nav-item">
-            <a href="destino.html" class="nav-link" aria-current="page">Destinos</a>
+            <a th:href="@{/destino}"  class="nav-link" aria-current="page">Destinos</a>
           </li>
           <li class="nav-item">
-            <a href="contato.html" class="nav-link" aria-current="page">Contato</a>
+            <a th:href="@{/contato}" class="nav-link" aria-current="page">Contato</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Login
             </a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="entrar.html">Entrar</a></li>
-              <li><a class="dropdown-item" href="cadastro.html">Cadastre-se</a></li>
-            </ul>
+              <li><a th:href="@{/entrar}" class="dropdown-item" href="entrar.html">Entrar</a></li>
+              <li><a th:href="@{/cliente/cadastrar}" class="dropdown-item" href="cadastro.html">Cadastre-se</a></li>
+             </ul>
           </li>
     </ul>
         </ul>
@@ -62,48 +61,48 @@
   <div class="row row-cols-1 row-cols-md-2 g-4">
     <div class="col">
       <div class="card">
-        <img src="lasvegas.jpeg" class="card-img-top" alt="Lasvegas">
+        <img src="./images/lasvegas.jpeg" class="card-img-top" alt="Lasvegas">
         <div class="card-body">
           <h5 class="card-title">Las Vegas - Estados Unidos</h5>
           <p class="card-text">Um oásis no deserto que cativa os visitantes com sua arquitetura extravagante, hotéis
             temáticos deslumbrantes e oportunidades de entretenimento sem fim, tornando-a uma cidade que nunca dorme e
             que promete momentos emocionantes e luxuosos.</p>
-          <button type="button" class="btn btn-primary">Reservar Pacote</button>
+          <a th:href="@{/destinos/cadastrar}" type="button" class="btn btn-primary">Reservar Pacote</a>
         </div>
       </div>
     </div>
     <div class="col">
       <div class="card">
-        <img src="santorini.jpeg" class="card-img-top" alt="Santorini">
+        <img src="./images/santorini.jpeg" class="card-img-top" alt="Santorini">
         <div class="card-body">
           <h5 class="card-title">Santorini - Grécia</h5>
           <p class="card-text">A ilha de Santorini, localizada na Grécia, é considerada um dos destinos mais românticos
             do país. Com as típicas casinhas brancas com telhado azul – as cores da bandeira grega – o local oferece
             paisagens deslumbrantes e, segundo os gregos, o pôr do sol mais bonito do mundo.</p>
 
-          <button type="button" class="btn btn-primary">Reservar Pacote</button>
+          <a th:href="@{/destino/cadastrar}" type="button" class="btn btn-primary">Reservar Pacote</a>
         </div>
       </div>
     </div>
     <div class="col">
       <div class="card">
-        <img src="maragogi.jpeg" class="card-img-top" alt="Maragogi">
+        <img src="./images/maragogi.jpeg" class="card-img-top" alt="Maragogi">
         <div class="card-body">
           <h5 class="card-title">Maragogi - Alagoas</h5>
           <p class="card-text">Um verdadeiro paraíso tropical com suas praias de águas cristalinas e piscinas naturais
             exuberantes, proporcionando uma experiência única de contato com a natureza em um cenário paradisíaco.</p>
-          <button type="button" class="btn btn-primary">Reservar Pacote</button>
+          <a th:href="@{/destino/cadastrar}"type="button" class="btn btn-primary">Reservar Pacote</a>
         </div>
       </div>
     </div>
     <div class="col">
       <div class="card">
-        <img src="lençois.jpeg" class="card-img-top" alt="Lençóis">
+        <img src="./images/lençois.jpeg" class="card-img-top" alt="Lençóis">
         <div class="card-body">
           <h5 class="card-title">Lençóis Maranhenses - Maranhão</h5>
           <p class="card-text">É mergulhar em um mundo de beleza natural incomparável, onde a imensidão das dunas e a
             riqueza das lagoas proporcionam uma experiência surreal. Essa maravilha da natureza é a oportunidade de vivenciar um destino mágico e inexplorado."</p>
-          <button type="button" class="btn btn-primary">Reservar Pacote</button>
+          <a th:href="@{/destino/cadastrar}" type="button" class="btn btn-primary">Reservar Pacote</a>
         </div>
       </div>
     </div>

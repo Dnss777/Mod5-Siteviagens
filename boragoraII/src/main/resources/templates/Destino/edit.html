@@ -12,10 +12,10 @@
   <body>
 	  
 <nav class="navbar">
-	
-<div class="container-fluid">
+    <div class="container-fluid">
       <h1> Bora Agora?</h1>
       <a class="navbar-brand" href="#">Deixa conosco o planejamento!</a>
+
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -23,28 +23,28 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a href="index.html" class="nav-link active" aria-current="page">Home</a>
+            <a th:href="@{/}" class="nav-link active" aria-current="page">Home</a>
           </li>
           <li class="nav-item">
-            <a href="promocao.html" class="nav-link" aria-current="page">Promoções</a>
+            <a th:href="@{/promocoes}"  class="nav-link" aria-current="page">Promoções</a>
           </li>
           <li class="nav-item">
-            <a href="destino.html" class="nav-link" aria-current="page">Destinos</a>
+            <a th:href="@{/destino}"  class="nav-link" aria-current="page">Destinos</a>
           </li>
           <li class="nav-item">
-            <a href="contato.html" class="nav-link" aria-current="page">Contato</a>
+            <a th:href="@{/contato}" class="nav-link" aria-current="page">Contato</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Login
             </a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="entrar.html">Entrar</a></li>
-              <li><a class="dropdown-item" href="cadastro.html">Cadastre-se</a></li>
+              <li><a th:href="@{/entrar}" class="dropdown-item" href="entrar.html">Entrar</a></li>
+              <li><a th:href="@{/cliente/cadastrar}" class="dropdown-item" href="cadastro.html">Cadastre-se</a></li>
              </ul>
           </li>
     </ul>
-        
+        </ul>
         <form class="d-flex" role="search">
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-success" type="submit">Pesquisar</button>
@@ -56,43 +56,41 @@
 
 		
 		<div class="container py-3">
-            <form action="./destinos-save">
+            <form method="POST" th:object="${destino}">
 	            <h2 class="text-center">Atualizar</h2>
-	            <input type="hidden" id="id_Destino" name="id_Destino" class="form-control" value="${destino.id_Destino}" />
-
+	            
+	            <input type="hidden" th:field="*{idDest}">
 
 	            <div class="form-group mb-3">
 	                <label for="data" class="form-label">
 	                    Data
 	                </label>
-	                <input type="text" id="data" name="data" class="form-control" value="${destino.data_Destino}" />
+	                <input type="text" class="form-control" id="data" th:field="*{data}">
 	            </div>
 	            
 	            <div class="form-group mb-3">
-	                <label for="destino" class="form-label">
-	                    Destino
+	                <label for="nome" class="form-label">
+	                    Nome
 	                </label>
-	                <input type="destino" id="nome_Destino" name="destino" class="form-control" value="${destino.nome_Destino}" />
+	                <input type="nome" class="form-control" id="nome" th:field="*{nome}">
 	            </div>
 	            
 	            <div class="form-group mb-3">
 	                <label for="valor" class="form-label">
 	                    Valor
 	                </label>
-	                <input type="valor" id="valor" name="valor" class="form-control" value="${destino.valor_Destino}" />
+	                <input type="text" class="form-control" id="valor" th:field="*{valor}">
 	            </div>
 	            
-	           
 	            <button type="submit" class="btn btn-primary">
 	                Enviar
 	            </button>
-	            <a href="./usuario" class="btn btn-danger" style="margin-left: 10px">
-	                Cancelar
-	            </a>
+	            <a href="/cliente" class=" btn btn-danger">Cancelar</a>
             </form>
         </div>
 		
     </main>
+    
     
 	<footer>
     <div class="footer-info">

@@ -30,11 +30,23 @@ public class CompraController {
 
 	@GetMapping
 	public ModelAndView compra() {
-		ModelAndView modelAndView = new ModelAndView("views/compras/index.html");
+		ModelAndView modelAndView = new ModelAndView("Compra/list");
 
 		modelAndView.addObject("listaCliente", clienteRepository.findAll());
 		modelAndView.addObject("listaDestino", destinoRepository.findAll());
 		modelAndView.addObject("compra", compraRepository.findAll());
+		modelAndView.addObject("compra", new Compra());
+		
+		return modelAndView;
+	}
+	
+	
+	@GetMapping("/cadastrar")
+	public ModelAndView cadastrar() {
+		ModelAndView modelAndView = new ModelAndView("Compra/form");
+
+		modelAndView.addObject("listaCliente", clienteRepository.findAll());
+		modelAndView.addObject("listaDestino", destinoRepository.findAll());
 		modelAndView.addObject("compra", new Compra());
 		
 		return modelAndView;
@@ -64,6 +76,8 @@ public class CompraController {
 
 		return "redirect:/compra";
 	}
+	
+	
 }
 
 

@@ -22,11 +22,11 @@ public class Compra{
 	private Double total;
 	
 	@ManyToOne
-	@JoinColumn(name = "idCli")
+	@JoinColumn(name = "id_cli")
 	private Cliente cliente;
 	
 	@ManyToOne
-	@JoinColumn(name = "idDest")
+	@JoinColumn(name = "id_dest")
 	private Destinos destino;}
 
 

@@ -18,9 +18,12 @@ public class Destinos{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long idDest;
+	private Long id;
 	private String data;
 	private String nome;
 	private Double valor;
 
+	
+//	@OneToMany(mappedBy = "destino")
+//    private List<Destinos> destino;
 }

@@ -24,7 +24,7 @@ public class ClienteController {
     // lista todos os dados do banco usuario
     @GetMapping
     public ModelAndView listar() {
-        ModelAndView modelAndView = new ModelAndView("Cliente/list.html");
+        ModelAndView modelAndView = new ModelAndView("Cliente/list");
 
         List<Cliente> clientes = clienteRepository.findAll();
         modelAndView.addObject("clientes", clientes);
@@ -70,7 +70,16 @@ public class ClienteController {
  
 		return modelAndView;
 	}
-
+	
+	 @GetMapping("/{id}/excluir")
+		public ModelAndView excluir(@PathVariable Long id) {
+			ModelAndView modelAndView = new ModelAndView("redirect:/cliente"); //nome da pasta / arquivo html
+	 
+			 clienteRepository.deleteById(id);
+				 
+			return modelAndView;
+		}
+	
 }
 	
 

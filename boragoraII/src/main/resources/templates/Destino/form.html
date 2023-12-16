@@ -29,25 +29,25 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a href="index.html" class="nav-link active" aria-current="page">Home</a>
+            <a th:href="@{/}" class="nav-link active" aria-current="page">Home</a>
           </li>
           <li class="nav-item">
-            <a href="promocao.html" class="nav-link" aria-current="page">Promoções</a>
+            <a th:href="@{/promocoes}"  class="nav-link" aria-current="page">Promoções</a>
           </li>
           <li class="nav-item">
-            <a href="destino.html" class="nav-link" aria-current="page">Destinos</a>
+            <a th:href="@{/destino}"  class="nav-link" aria-current="page">Destinos</a>
           </li>
           <li class="nav-item">
-            <a href="contato.html" class="nav-link" aria-current="page">Contato</a>
+            <a th:href="@{/contato}" class="nav-link" aria-current="page">Contato</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Login
             </a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="entrar.html">Entrar</a></li>
-              <li><a class="dropdown-item" href="cadastro.html">Cadastre-se</a></li>
-                                      </ul>
+              <li><a th:href="@{/entrar}" class="dropdown-item" href="entrar.html">Entrar</a></li>
+              <li><a th:href="@{/cliente/cadastrar}" class="dropdown-item" href="cadastro.html">Cadastre-se</a></li>
+             </ul>
           </li>
     </ul>
         </ul>
@@ -75,31 +75,36 @@
           
           
           <!-- Formulário de cadastro aqui -->
-          <div class="row g-3">
-		  <form action="./destinos-save" class="row g-3">
-            <div class="col mb-3">
-              <label for="inputEmail4" class="form-label fw-bold">Data Destino</label>
-              <input type="text" class="form-control" placeholder="" aria-label="data" name="data">
-            </div>
-          </div>
-          
-            <div class="col-md-6 mb-2">
-              <label for="inputEmail4" class="form-label fw-bold">Nome Destino</label>
-              <input type="text" class="form-control" placeholder="" aria-label="destino" name="destino">
-            </div>
-            
-                <div class="col-md-6 mb-2">
-                <label for="inputEmail4" class="form-label fw-bold">Valor Destino</label>
-                <input type="text" class="form-control" placeholder="" aria-label="valor" name="valor">
-              </div>
-                       
-                                  
-            <div class="col-12">
-              <button type="submit" class="btn btn-primary">Cadastrar</button>
-            </div>
-          </form>
-      </div>
-  </div>
+          <div class="row">
+				<div class="col-md col-lg">
+					<form method="POST" th:object="${destino}">
+						<div class="row g-3">
+							<div class="col-sm-6">
+								<label for="data" class="form-label">Data</label>
+								<input type="text" class="form-control" id="data" th:field="*{data}" required>
+							</div>
+						
+							<div class="col-sm-6">
+								<label for="idDest" class="form-label">ID Destino</label>
+								<input type="text" class="form-control" id="idDest" th:field="*{idDest}"
+									 required>
+							</div>
+								<div class="col-sm-6">
+								<label for="nome" class="form-label"> Destino </label>
+								<input type="text" class="form-control" id="nome" th:field="*{nome}" required>
+							</div>
+														
+							<div class="col-sm-6">
+								<label for="valor" class="form-label">Valor</label>
+								<input type="text" class="form-control" id="valor" th:field="*{valor}" required>
+							</div>
+							
+							<button type="submit" class="w-100 btn btn-primary btn-lg">Cadastrar</button>
+
+						</div>
+					</form>
+				</div>
+			</div>
     
         </main>
 

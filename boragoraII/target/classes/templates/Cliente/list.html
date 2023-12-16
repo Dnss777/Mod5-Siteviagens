@@ -68,17 +68,17 @@
 
 
                     <tr th:each="cliente : ${clientes}">
-                        <td th:text="${cliente.idCli}"></td>
+                        <td th:text="${cliente.id}"></td>
                         <td th:text="${cliente.nome}"></td>
                         <td th:text="${cliente.telefone}"></td>
                         <td th:text="${cliente.email}"></td>
 
 <td>
-								<a th:href="@{/cliente/{id}/editar (id=${cliente.idCli})}"
+								<a th:href="@{/cliente/{id}/editar (id=${cliente.id})}"
 									class="btn btn-primary btn-edit mb-1">
 									Editar
 								</a>
-								<a th:href="@{/cliente/{id}/excluir (id=${cliente.idCli})}"
+								<a th:href="@{/cliente/{id}/excluir (id=${cliente.id})}"
 									class="btn btn-danger btn-edit mb-1"
 									onclick="return confirm('Tem certeza que deseja excluir o cliente?');">
 									Excluir

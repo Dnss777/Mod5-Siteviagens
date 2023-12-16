@@ -14,10 +14,14 @@ public class Cliente {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long idCli;
+	private Long id;
 	private String email;
 	private String senha;
 	private String telefone;
 	private String nome;
-
+	
+//	@OneToMany(mappedBy = "cliente")
+//    private List<Compra> compras;
+	
+	
 }

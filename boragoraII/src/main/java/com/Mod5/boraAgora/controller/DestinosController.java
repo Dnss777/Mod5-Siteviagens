@@ -1,5 +1,8 @@
 package com.Mod5.boraAgora.controller;
 
+
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,36 +14,41 @@ import org.springframework.web.servlet.ModelAndView;
 import com.Mod5.boraAgora.entities.Destinos;
 import com.Mod5.boraAgora.repositories.DestinoRepository;
 
+
 @Controller
-@RequestMapping("/destino")
+@RequestMapping("/destinos")
 public class DestinosController {
 	
 	@Autowired
-	private DestinoRepository DestinoRepository;
-
+	private DestinoRepository destinoRepository;
+	
+	
 	@GetMapping
-	public ModelAndView destino() {
-		ModelAndView modelAndView = new ModelAndView("views/destino/index.html");
-		modelAndView.addObject("destino", DestinoRepository.findAll());
-
-		modelAndView.addObject("destino", new Destinos());
-
+	public ModelAndView destinos() {
+		ModelAndView modelAndView = new ModelAndView("Destino/list.html");
+		List<Destinos> destinos = destinoRepository.findAll();
+		modelAndView.addObject("destinos", destinos);
 		return modelAndView;
 	}
 
-	@PostMapping("/cadastrar")
-	public String cadastrar(Destinos destino) {
-		DestinoRepository.save(destino);
-
-		return "redirect:/destino";
+	@GetMapping("/cadastrar")
+	public ModelAndView cadastrar() {
+		ModelAndView modelAndView = new ModelAndView("Destino/form.html");
+		modelAndView.addObject("destino", new Destinos());
+		return modelAndView;
 	}
 
-	@GetMapping("/{idDest}/excluir")
-	public String excluir(@PathVariable Long id) {
-		DestinoRepository.deleteById(id);
-
-		return "redirect:/destino";
+	@PostMapping({"/cadastrar", "/{id}/editar"})
+	public ModelAndView cadastrar(Destinos destino) {
+		ModelAndView modelAndView = new ModelAndView("redirect:/destino");
+		destinoRepository.save(destino);
+		return modelAndView;
 	}
 
+	@GetMapping("/{id}/excluir")
+	public ModelAndView excluir(@PathVariable Long id) {
+		ModelAndView modelAndView = new ModelAndView("redirect:/destino");
+		destinoRepository.deleteById(id);
+		return modelAndView;
+	}
 }
-	
