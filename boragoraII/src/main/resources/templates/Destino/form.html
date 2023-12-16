@@ -77,18 +77,14 @@
           <!-- Formulário de cadastro aqui -->
           <div class="row">
 				<div class="col-md col-lg">
-					<form method="POST" th:object="${destino}">
+					<form method="POST" th:object="${destinos}">
 						<div class="row g-3">
 							<div class="col-sm-6">
 								<label for="data" class="form-label">Data</label>
 								<input type="text" class="form-control" id="data" th:field="*{data}" required>
 							</div>
 						
-							<div class="col-sm-6">
-								<label for="idDest" class="form-label">ID Destino</label>
-								<input type="text" class="form-control" id="idDest" th:field="*{idDest}"
-									 required>
-							</div>
+						
 								<div class="col-sm-6">
 								<label for="nome" class="form-label"> Destino </label>
 								<input type="text" class="form-control" id="nome" th:field="*{nome}" required>

@@ -33,21 +33,34 @@ public class DestinosController {
 
 	@GetMapping("/cadastrar")
 	public ModelAndView cadastrar() {
-		ModelAndView modelAndView = new ModelAndView("Destino/form.html");
-		modelAndView.addObject("destino", new Destinos());
+		ModelAndView modelAndView = new ModelAndView("Destino/form");
+		modelAndView.addObject("destinos", new Destinos());
+		return modelAndView;
+	}
+	 
+    @GetMapping("/{id}/editar")
+	public ModelAndView editar(@PathVariable Long id) {
+		ModelAndView modelAndView = new ModelAndView("destinos/edit.html"); //nome da pasta / arquivo html
+ 
+		Destinos destinos = destinoRepository.getReferenceById(id);
+		modelAndView.addObject("destinos", destinos);
+ 
 		return modelAndView;
 	}
 
-	@PostMapping({"/cadastrar", "/{id}/editar"})
-	public ModelAndView cadastrar(Destinos destino) {
-		ModelAndView modelAndView = new ModelAndView("redirect:/destino");
+    @PostMapping("/{id}/editar")
+	public ModelAndView editar(Destinos destino) {	
+		
+		
 		destinoRepository.save(destino);
+		ModelAndView modelAndView = new ModelAndView("redirect:/destinos");
+ 
 		return modelAndView;
 	}
 
 	@GetMapping("/{id}/excluir")
 	public ModelAndView excluir(@PathVariable Long id) {
-		ModelAndView modelAndView = new ModelAndView("redirect:/destino");
+		ModelAndView modelAndView = new ModelAndView("redirect:/destinos");
 		destinoRepository.deleteById(id);
 		return modelAndView;
 	}

@@ -68,17 +68,23 @@
                   <tbody>
                      
 
-                    <tr th:each="destino : ${Destino}">
-                        <td th:text="${destino.id_dest}"></td>
+                    <tr th:each="destino : ${destinos}">
+                        <td th:text="${destino.id}"></td>
                         <td th:text="${destino.data}"></td>
                         <td th:text="${destino.nome}"></td>
                         <td th:text="${destino.valor}"></td>
 
                         <td>
-                            <a href="destinos-edit?id=${destino.id_dest}" class="btn btn-primary mb-1" >Editar</a>
-
-                            <a href="destinos-delete?id=${destino.id_dest}" onclick="return confirm('Deseja excluir ${d.nome}?')" class="btn btn-danger mb-1">Excluir</a>
-                        </td>
+                            <a th:href="@{/destino/{id}/editar (id=${destino.id})}"
+									class="btn btn-primary btn-edit mb-1">
+									Editar
+								</a>
+								<a th:href="@{/destino/{id}/excluir (id=${destino.id})}"
+									class="btn btn-danger btn-edit mb-1"
+									onclick="return confirm('Tem certeza que deseja excluir o destino?');">
+									Excluir
+								</a>
+							</td>
 
                     </tr>
                 
@@ -113,7 +119,7 @@
     </div>
     <div class="footer-text">
       <p>&copy; 2023 Agência de Viagens. Todos os direitos reservados.</p>
-      <img class="img-footer" src="footer3.png" alt="Bandeiras Cartoes">
+      <img class="img-footer" src="./images/footer3.png" alt="Bandeiras Cartoes">
     </div>
   </footer>
 
