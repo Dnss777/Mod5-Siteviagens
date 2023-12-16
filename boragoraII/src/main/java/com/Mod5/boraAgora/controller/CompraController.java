@@ -69,7 +69,7 @@ public class CompraController {
 
 	    compraRepository.save(compra);
 
-	    ModelAndView modelAndView = new ModelAndView("redirect:/compra"); // Alterado para redirecionar para /compra
+	    ModelAndView modelAndView = new ModelAndView("redirect:/compra/list"); // Alterado para redirecionar para /compra
 	    return modelAndView;
 	}
 
